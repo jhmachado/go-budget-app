@@ -37,4 +37,7 @@ func CreateTransaction(w http.ResponseWriter, r *http.Request) {
 	var body, _ = ioutil.ReadAll(r.Body)
 
 	_ = json.Unmarshal(body, &newTransaction)
+
+	w.WriteHeader(http.StatusCreated)
+	w.Write([]byte(`{"response": "A new transaction was created"}`))
 }
